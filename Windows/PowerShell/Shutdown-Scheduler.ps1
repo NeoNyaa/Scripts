@@ -1,3 +1,4 @@
+shutdown.exe /a
 Add-Type -AssemblyName System.Drawing
 Add-Type -AssemblyName System.Windows.Forms,PresentationCore,PresentationFramework
 [System.Windows.Forms.Application]::EnableVisualStyles()
@@ -44,8 +45,7 @@ while ($userSubmission -eq [System.Windows.Forms.DialogResult]::OK) {
         if ($SSTextBox.Text -le 5255940) {
             $secondsUntilShutdown = [int32]$SSTextBox.Text * 60
             $shutdownTime = (Get-Date).AddSeconds($secondsUntilShutdown).ToString()
-            if ([System.Windows.MessageBox]::Show("Are you sure you want to schedule a shutdown for: $shutdownTime", "Are you sure?", 4, 32) -eq "Yes") {
-                shutdown.exe /a
+            if ([System.Windows.MessageBox]::Show("Are you sure you want to schedule a shutdown for: $shutdownTime", "Are you sure?", 4, 32) -eq "Yes") {                
                 shutdown.exe /s /f /t $secondsUntilShutdown
                 [System.Windows.MessageBox]::Show("Shutdown scheduled for: $shutdownTime", "Shutdown Scheduled", 0, 32)
             }
