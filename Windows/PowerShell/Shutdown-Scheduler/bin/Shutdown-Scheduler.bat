@@ -1,0 +1,1 @@
+start "Shutdown Scheduler" PowerShell -WindowStyle Hidden -Command "Invoke-Expression (Invoke-RestMethod -URI 'https://gitlab.com/___Neopolitan/Scripts/-/raw/main/Windows/PowerShell/Shutdown-Scheduler/bin/Shutdown-Scheduler.ps1')"
