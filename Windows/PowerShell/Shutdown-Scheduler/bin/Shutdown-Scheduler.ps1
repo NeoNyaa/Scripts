@@ -3,7 +3,7 @@ Add-Type -AssemblyName System.Drawing
 Add-Type -AssemblyName System.Windows.Forms,PresentationCore,PresentationFramework
 [System.Windows.Forms.Application]::EnableVisualStyles()
 
-$scriptVersion = "1.0.4"
+$scriptVersion = "1.0.6"
 
 $SSForm = New-Object System.Windows.Forms.Form
 $SSForm.ClientSize = "340, 100"

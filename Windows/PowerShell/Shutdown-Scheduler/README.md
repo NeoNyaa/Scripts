@@ -19,3 +19,6 @@
 
 - v1.0.5
     - Fixed broken download link
+
+- v1.0.6
+    - Forgot the version bump the script itself
