@@ -1,4 +1,4 @@
-# [Download Shutdown Scheduler](https://gitlab.com/___Neopolitan/Scripts/-/raw/main/Windows/PowerShell/Shutdown-Scheduler/bin/Shutdown-Scheduler.bat)
+# [Download Shutdown Scheduler](https://gitlab.com/___Neopolitan/Scripts/-/raw/main/Windows/PowerShell/Shutdown-Scheduler/bin/Shutdown-Scheduler.bat?inline=false)
 
 ### Changelog
 - v1.0.0
@@ -16,3 +16,6 @@
 - v1.0.4
     - Restructured repository and gave a download link for the one click batch file which you can find above.
     - Added a version number to the main window title
+
+- v1.0.5
+    - Fixed broken download link
