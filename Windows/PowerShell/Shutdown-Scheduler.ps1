@@ -42,7 +42,7 @@ $userSubmission = $SSForm.ShowDialog()
 
 while ($userSubmission -eq [System.Windows.Forms.DialogResult]::OK) {
     if ($SSTextBox.Text -Match '^\d+$') {
-        if ($SSTextBox.Text -le 5255940) {
+        if ($SSTextBox.Text -le 5255999) {
             $secondsUntilShutdown = [int32]$SSTextBox.Text * 60
             $shutdownTime = (Get-Date).AddSeconds($secondsUntilShutdown).ToString()
             if ([System.Windows.MessageBox]::Show("Are you sure you want to schedule a shutdown for: $shutdownTime", "Are you sure?", 4, 32) -eq "Yes") {                
@@ -51,11 +51,11 @@ while ($userSubmission -eq [System.Windows.Forms.DialogResult]::OK) {
             }
             break
         } else {
-            [System.Windows.MessageBox]::Show("The shutdown delay must be a number within the range 0-5255940.", "ERROR: INVALID INPUT", 0, 16)
+            [System.Windows.MessageBox]::Show("The shutdown delay must be a number within the range 0-5255999.", "ERROR: INVALID INPUT", 0, 16)
             $userSubmission = $SSForm.ShowDialog()
         }
     } else {
-        [System.Windows.MessageBox]::Show("The shutdown delay must be a number within the range 0-5255940.", "ERROR: INVALID INPUT", 0, 16)
+        [System.Windows.MessageBox]::Show("The shutdown delay must be a number within the range 0-5255999.", "ERROR: INVALID INPUT", 0, 16)
         $userSubmission = $SSForm.ShowDialog()
     }
 }
