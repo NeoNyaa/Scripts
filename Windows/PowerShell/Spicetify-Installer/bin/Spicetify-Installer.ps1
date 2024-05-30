@@ -21,7 +21,8 @@ $spotifySetup.WaitForExit()
 Write-Host "Deleting the Spotify installer`n"
 Remove-Item -Path "$env:TEMP/SpotifySetup.exe" -Force
 
-Write-Host "Killing Spotify`n"
+Write-Host "Killing Spotify in 5 seconds`n"
+Start-Sleep -Seconds 5
 TASKKILL /f /t /im Spotify.exe *> $null
 
 if (!(Get-Command spicetify -ErrorAction SilentlyContinue)) {
