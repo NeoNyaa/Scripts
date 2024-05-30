@@ -1,22 +1,28 @@
 $ProgressPreference = 'SilentlyContinue'
+$Host.UI.RawUI.WindowTitle = 'Spicetify On Startup - V1.0.1'
 Clear-Host
 Write-Host
 
 Write-Host "Killing Spotify"
 TASKKILL /f /t /im Spotify.exe *> $null
 
-Write-Host "Downloading Spotify installer"
+Write-Host "Checking for and uninstalling the Microsoft Store variant of Spotify"
+ForEach ($Package in Get-AppxPackage *spotify*) {
+    Remove-AppxPackage $Package
+}
+
+Write-Host "Downloading the Spotify installer"
 Invoke-WebRequest -URI "https://download.scdn.co/SpotifySetup.exe" -OutFile "$env:TEMP/SpotifySetup.exe"
 
 Write-Host "Installing Spotify"
 $spotifySetup = Start-Process -FilePath "$env:TEMP/SpotifySetup.exe" -PassThru -NoNewWindow
 $spotifySetup.WaitForExit()
 
-Write-Host "Deleting Spotify installer"
+Write-Host "Deleting the Spotify installer"
 Remove-Item -Path "$env:TEMP/SpotifySetup.exe" -Force
-TASKKILL /f /t /im Spotify.exe *> $null
 
 Write-Host "Killing Spotify"
+TASKKILL /f /t /im Spotify.exe *> $null
 
 if (!(Get-Command spicetify -ErrorAction SilentlyContinue)) {
     Write-Host "Downloading spicetify"
