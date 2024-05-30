@@ -1,6 +1,5 @@
 $ProgressPreference = 'SilentlyContinue'
 $Host.UI.RawUI.WindowTitle = 'Spicetify Installer - V1.0.2'
-pause
 Clear-Host
 Write-Host
 
