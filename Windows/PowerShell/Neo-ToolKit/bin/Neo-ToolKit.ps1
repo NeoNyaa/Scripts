@@ -19,9 +19,9 @@ while ($true) {
 
     if ($userSelection -eq 0) {
         Invoke-Expression -Command $tools.values[$userSelection]
-    } else {
-        $toolToRun = $tools.values[$userSelection]
     }
+    
+    $toolToRun = $tools.values[$userSelection]
     
     Start-Process -FilePath (Get-Process -Pid $PID -FileVersionInfo).FileName -Verb RunAs -ArgumentList "-Command $toolToRun"
 }
