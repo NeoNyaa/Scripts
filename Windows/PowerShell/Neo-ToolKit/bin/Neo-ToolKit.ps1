@@ -51,9 +51,8 @@ while ($true) {
     
     # Finally run the script the user chose as admin to ensure the script can run.
     if ($toolToRun -match 'NoExit') {
-        Start-Process -FilePath $PowerShellExePath -NoExit -Verb RunAs -ArgumentList "-Command $toolToRun"
+        Start-Process -FilePath $PowerShellExePath -Verb RunAs -ArgumentList "-NoExit -Command $toolToRun"
     } else {
         Start-Process -FilePath $PowerShellExePath -Verb RunAs -ArgumentList "-Command $toolToRun"
     }
-    Pause
 }

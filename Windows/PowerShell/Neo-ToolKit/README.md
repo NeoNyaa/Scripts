@@ -10,6 +10,8 @@
 -   v1.0.2
     -   Updated the link for the batch script
 -   v.1.1.0
-    -   Added Impersonate TruestedInstaler
+    -   Added Impersonate TrustedInstaler
 -   v1.1.1
-    -   Added support for keeping terminal windows open should the script actually require it.
+    -   Added support for keeping terminal windows open should the script actually require it
+-   v1.1.2
+    -   Fixed Impersonate TrustedInstaller not loading due to a mispositioned -NoExit argument
