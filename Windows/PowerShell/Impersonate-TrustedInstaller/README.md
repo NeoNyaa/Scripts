@@ -6,3 +6,5 @@
     -   Initial Release
 -   v1.0.1
     -   Implemented the batch script
+-   v1.0.2
+    -   Exit on failed impersonation
