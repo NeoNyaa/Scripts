@@ -11,3 +11,5 @@
     -   Updated the link for the batch script
 -   v.1.1.0
     -   Added Impersonate TruestedInstaler
+-   v1.1.1
+    -   Added support for keeping terminal windows open should the script actually require it.
