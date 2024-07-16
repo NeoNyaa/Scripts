@@ -16,7 +16,7 @@ Write-Host "Attempting to impersonate TrustedInstaller"
 Start-Service TrustedInstaller
 try {
     $null = (Get-NtThread -Current -PseudoHandle).ImpersonateThread((Get-NtProcess -Name TrustedInstaller.exe).GetFirstThread())
-    Write-Host "Success!"
+    Write-Host "Success!`n"
 }
 catch {
     Read-Host -Prompt "Failed! Make sure that only one instance of an impersonated terminal session is active at any one time."
