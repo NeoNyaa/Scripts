@@ -19,5 +19,5 @@ try {
     Write-Host "Success!"
 }
 catch {
-    Write-Host "Failed! Make sure that only one instance of an impersonated terminal session is active at any one time."
+    Read-Host -Prompt "Failed! Make sure that only one instance of an impersonated terminal session is active at any one time."
 }

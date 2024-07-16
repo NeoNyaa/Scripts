@@ -1,4 +1,4 @@
-# [Download Neo-ToolKit](https://gitlab.com/___Neopolitan/Scripts/-/raw/main/Windows/PowerShell/Neo-ToolKit/bin/Neo-ToolKit.bat?inline=false)
+# [Download Neo-ToolKit](https://cdn.githubraw.com/NeoNyaa/Scripts/main/Windows/PowerShell/Neo-ToolKit/bin/Neo-ToolKit.bat)
 
 ### Changelog
 
