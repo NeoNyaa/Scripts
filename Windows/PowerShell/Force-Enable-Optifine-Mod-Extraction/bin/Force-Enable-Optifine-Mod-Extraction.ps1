@@ -10,13 +10,13 @@ Write-Host ". (Done)" -ForegroundColor DarkGray
 
 # Fetch the version index
 Write-Host "Fetching version index " -NoNewline
-$versionIndex = Invoke-WebRequest -UseBasicParsing -URI 'https://piston-meta.mojang.com/mc/game/version_manifest_v2.json' -ProgressAction SilentlyContinue | ConvertFrom-Json
+$versionIndex = Invoke-WebRequest -UseBasicParsing -URI 'https://piston-meta.mojang.com/mc/game/version_manifest_v2.json' | ConvertFrom-Json
 Write-Host "(Done)" -ForegroundColor DarkGray
 
 # Iterate over each version from the above index and if it's a release, download the client file to the respective folder
 foreach ($version in $VersionIndex.versions) {
     if ($version.type -eq "release") {
-        $versionMeta = Invoke-WebRequest -UseBasicParsing -URI $version.url -ProgressAction SilentlyContinue | ConvertFrom-Json
+        $versionMeta = Invoke-WebRequest -UseBasicParsing -URI $version.url | ConvertFrom-Json
         $versionID = $versionMeta.id
 
         if ($versionID -eq "1.7.1") {

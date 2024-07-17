@@ -4,3 +4,8 @@
 
 -   v1.0.0
     -   Initial Release
+-   v1.0.1
+    -   Disabled showing some progress bars for cleaner terminal output
+        -   The progress bars disabled were those for the version index and version manifest as they are incredibly small files relitively speaking. The only progress bars that show now SHOULD be the jar file downloads bars.
+-   v1.0.2
+    -   Rolled back above changes because PowerShell v1 sucks
