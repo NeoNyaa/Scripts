@@ -15,11 +15,11 @@ Write-Host "(Done)" -ForegroundColor DarkGray
 
 # Iterate over each version from the above index and if it's a release, download the client file to the respective folder
 foreach ($version in $VersionIndex.versions) {
-    if ($version.type -eq "release") {
+    if ($version.type -eq "release" -or $version.id -eq "1.7.1") { # Version 1.7.1 is WRONGLY marked as a snapshot and would otherwise get missed
         $versionMeta = Invoke-WebRequest -UseBasicParsing -URI $version.url | ConvertFrom-Json
         $versionID = $versionMeta.id
 
-        if ($versionID -match "1.7.1") {
+        if ($versionID -match '1.7.1$') {
             break
         }
 
