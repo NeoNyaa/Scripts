@@ -19,7 +19,7 @@ foreach ($version in $VersionIndex.versions) {
         $versionMeta = Invoke-WebRequest -UseBasicParsing -URI $version.url | ConvertFrom-Json
         $versionID = $versionMeta.id
 
-        if ($versionID -eq "1.7.1") {
+        if ($versionID -match "1.7.1") {
             break
         }
 
@@ -39,3 +39,4 @@ foreach ($version in $VersionIndex.versions) {
 # Let the user know the process is complete and then await an enter keypress
 Write-Host "`nYou should be able to extract the Optifine mod file now"
 Read-Host -Prompt "`nPress [Enter] to exit"
+exit 0

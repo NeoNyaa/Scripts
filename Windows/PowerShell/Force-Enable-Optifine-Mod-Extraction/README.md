@@ -9,3 +9,5 @@
         -   The progress bars disabled were those for the version index and version manifest as they are incredibly small files relitively speaking. The only progress bars that show now SHOULD be the jar file downloads bars.
 -   v1.0.2
     -   Rolled back above changes because PowerShell v1 sucks
+-   v1.0.3
+    -   Fixed an if statement not doing what it should be doing
