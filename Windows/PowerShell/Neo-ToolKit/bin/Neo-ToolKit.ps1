@@ -11,6 +11,7 @@ $tools = [ordered]@{
     "Windows 11 Debloat" = "iwr -useb 'https://raw.githubusercontent.com/Raphire/Win11Debloat/master/Get.ps1' | iex"
     "Microsoft Activation Scripts" = "irm 'https://get.activated.win' | iex"
     "Impersonate TrustedInstaller" = "'NoExit'; iwr -useb 'https://raw.githubusercontent.com/NeoNyaa/Scripts/main/Windows/PowerShell/Impersonate-TrustedInstaller/bin/Impersonate-TrustedInstaller.ps1' | iex"
+    "Force Enable Optifine Mod Extraction" = "iwr -useb 'https://raw.githubusercontent.com/NeoNyaa/Scripts/main/Windows/PowerShell/Force-Enable-Optifine-Mod-Extraction/bin/Force-Enable-Optifine-Mod-Extraction.ps1' | iex"
 }
 
 # Create a menu which will only stop running once the user requests it to do so.
