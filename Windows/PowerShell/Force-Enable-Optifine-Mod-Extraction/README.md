@@ -13,4 +13,4 @@
     -   Fixed an if statement not doing what it should be doing
 -   v1.0.4
     -   Fixed MC v1.7.1 getting skipped due to it being marked as a snapshot and not as a release
-        -   This was also why a check was failing further down the line
+        -   This causes a later check to fail completely
