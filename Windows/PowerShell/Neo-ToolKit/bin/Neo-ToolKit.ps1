@@ -12,6 +12,7 @@ $tools = [ordered]@{
     "Microsoft Activation Scripts" = "irm 'https://get.activated.win' | iex"
     "Impersonate TrustedInstaller" = "'NoExit'; iwr -useb 'https://raw.githubusercontent.com/NeoNyaa/Scripts/main/Windows/PowerShell/Impersonate-TrustedInstaller/bin/Impersonate-TrustedInstaller.ps1' | iex"
     "Force Enable Optifine Mod Extraction" = "iwr -useb 'https://raw.githubusercontent.com/NeoNyaa/Scripts/main/Windows/PowerShell/Force-Enable-Optifine-Mod-Extraction/bin/Force-Enable-Optifine-Mod-Extraction.ps1' | iex"
+    "Repair System Files" = "iwr -useb 'https://raw.githubusercontent.com/NeoNyaa/Scripts/main/Windows/PowerShell/Repair-System-Files/bin/Repair-System-Files.ps1' | iex"
 }
 
 # Create a menu which will only stop running once the user requests it to do so.
