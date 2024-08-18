@@ -1,0 +1,1 @@
+start "Repair System Files" PowerShell -Command "Invoke-Expression (Invoke-RestMethod -UseBasicParsing -URI 'https://raw.githubusercontent.com/NeoNyaa/Scripts/main/Windows/PowerShell/Repair-System-Files/bin/Repair-System-Files.ps1')"
