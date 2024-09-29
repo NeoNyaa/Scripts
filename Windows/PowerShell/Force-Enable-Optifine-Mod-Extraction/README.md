@@ -14,3 +14,5 @@
 -   v1.0.4
     -   Fixed MC v1.7.1 getting skipped due to it being marked as a snapshot and not as a release
         -   This causes a later check to fail completely
+-   v1.0.5
+    -   Disabled progress bars one again to improve download speeds

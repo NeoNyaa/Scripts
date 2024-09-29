@@ -1,3 +1,6 @@
+# Disable progress bars
+$ProgressPreference = 'SilentlyContinue'
+
 # Set up directories needed for Optifine
 Clear-Host
 Write-Host "Preparing directories" -NoNewLine
