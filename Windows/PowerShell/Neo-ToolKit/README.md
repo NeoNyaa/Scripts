@@ -15,3 +15,5 @@
     -   Added support for keeping terminal windows open should the script actually require it
 -   v1.1.2
     -   Fixed Impersonate TrustedInstaller not loading due to a mispositioned -NoExit argument
+-   v1.2.0
+    -   Added [Super God Mode by ThioJoe](https://github.com/ThioJoe/Windows-Super-God-Mode)

@@ -14,6 +14,7 @@ $tools = [ordered]@{
     "Force Enable Optifine Mod Extraction" = "iwr -useb 'https://raw.githubusercontent.com/NeoNyaa/Scripts/main/Windows/PowerShell/Force-Enable-Optifine-Mod-Extraction/bin/Force-Enable-Optifine-Mod-Extraction.ps1' | iex"
     "Repair System Files" = "iwr -useb 'https://raw.githubusercontent.com/NeoNyaa/Scripts/main/Windows/PowerShell/Repair-System-Files/bin/Repair-System-Files.ps1' | iex"
     "Office Tool Plus" = "irm https://otp.landian.vip/get/ | iex"
+    "Super God Mode" = "https://github.com/ThioJoe/Windows-Super-God-Mode/releases/latest/download/Super_God_Mode.ps1"
 }
 
 # Create a menu which will only stop running once the user requests it to do so.
