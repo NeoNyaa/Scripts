@@ -70,7 +70,7 @@ function download($type) {
   Start-Process -FilePath notepad.exe -ArgumentList Links.txt -Wait
   Clear-Host
   Write-FancyInfo "Fetching information and downloading content"
-  Invoke-Expression "yt-dlp.exe $completeArgs"
+  Invoke-Expression ".\yt-dlp.exe $completeArgs"
   Start-Process -FilePath explorer.exe -ArgumentList "$env:userprofile\Downloads\Neo-YTDLP"
 }
 
@@ -80,7 +80,7 @@ if (!(Test-Path -Path $binaryPath -ErrorAction 'SilentlyContinue')) {
 
 $Host.UI.RawUI.WindowTitle = "Neo-YTDLP - $scriptVersion"
 Set-Location $binaryPath
-.\yt-dlp.exe -U -q
+Invoke-Expression ".\yt-dlp.exe -U -q"
 Clear-Host
 Write-Host "`nPress 1 then [ENTER] for audio only downloads"
 Write-Host "Press 2 then [ENTER] for video only downloads"
