@@ -1,7 +1,7 @@
 # UX tweaks
 $global:ProgressPreference = 'SilentlyContinue'
 
-$scriptVersion = "v1.0.0"
+$scriptVersion = "v1.0.2"
 $binaryPath = "$env:LOCALAPPDATA\Programs\Neo-YTDLP"
 $initialDirectory = Get-Location
 $defaultArguments = "--embed-chapters --windows-filenames -w --quiet --progress -o `"%(title)s.%(ext)s`" -P `"$env:userprofile\Downloads\Neo-YTDLP`" -a `"$binaryPath\Links.txt`" --ffmpeg-location `"$binaryPath`""
