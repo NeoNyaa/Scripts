@@ -80,7 +80,7 @@ if (!(Test-Path -Path $binaryPath -ErrorAction 'SilentlyContinue')) {
 
 $Host.UI.RawUI.WindowTitle = "Neo-YTDLP - $scriptVersion"
 Set-Location $binaryPath
-yt-dlp.exe -U -q
+.\yt-dlp.exe -U -q
 Clear-Host
 Write-Host "`nPress 1 then [ENTER] for audio only downloads"
 Write-Host "Press 2 then [ENTER] for video only downloads"
