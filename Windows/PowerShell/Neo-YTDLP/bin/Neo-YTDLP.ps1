@@ -1,7 +1,7 @@
 # UX tweaks
 $global:ProgressPreference = 'SilentlyContinue'
 
-$scriptVersion = "v1.0.2"
+$scriptVersion = "v1.0.3"
 $binaryPath = "$env:LOCALAPPDATA\Programs\Neo-YTDLP"
 $initialDirectory = Get-Location
 $defaultArguments = "--embed-chapters --windows-filenames -w --quiet --progress -o `"%(title)s.%(ext)s`" -P `"$env:userprofile\Downloads\Neo-YTDLP`" -a `"$binaryPath\Links.txt`" --ffmpeg-location `"$binaryPath`""
@@ -12,7 +12,7 @@ function Write-FancyInfo($msg) {
 
 function Install-YTDLP {
   Clear-Host
-  $Host.UI.RawUI.WindowTitle = 'Neo-YTDLP Installer'
+  $Host.UI.RawUI.WindowTitle = 'Neo-YTDLP Installer - $scriptVersion'
 
   # Give user warning and alow them to exit
   Write-Host "`nIn order for this script to function some files need to be downloaded.`nNothing has been downloaded yet and you can safely exit this script if you dont wish to continue."
@@ -85,8 +85,8 @@ Clear-Host
 Write-Host "`nPress 1 then [ENTER] for audio only downloads"
 Write-Host "Press 2 then [ENTER] for video only downloads"
 Write-Host "Press 3 then [ENTER] for audio and video downloads"
-Write-Host "Press U then [ENTER] to completely reinstall yt-dlp"
-Write-Host "Press R then [ENTER] to completely uninstall yt-dlp`n"
+Write-Host "Press R then [ENTER] to completely reinstall yt-dlp"
+Write-Host "Press U then [ENTER] to completely uninstall yt-dlp`n"
 $optionPrompt = Read-Host -Prompt "Make a selection"
 
 switch ($optionPrompt) {
