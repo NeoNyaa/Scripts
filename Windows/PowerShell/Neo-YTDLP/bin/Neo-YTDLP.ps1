@@ -1,7 +1,7 @@
 # UX tweaks
 $global:ProgressPreference = 'SilentlyContinue'
 
-$scriptVersion = "v1.0.3"
+$scriptVersion = "v1.0.4"
 $binaryPath = "$env:LOCALAPPDATA\Programs\Neo-YTDLP"
 $initialDirectory = Get-Location
 $defaultArguments = "--embed-chapters --windows-filenames -w --quiet --progress -o `"%(title)s.%(ext)s`" -P `"$env:userprofile\Downloads\Neo-YTDLP`" -a `"$binaryPath\Links.txt`" --ffmpeg-location `"$binaryPath`""
@@ -12,7 +12,7 @@ function Write-FancyInfo($msg) {
 
 function Install-YTDLP {
   Clear-Host
-  $Host.UI.RawUI.WindowTitle = 'Neo-YTDLP Installer - $scriptVersion'
+  $Host.UI.RawUI.WindowTitle = "Neo-YTDLP Installer - $scriptVersion"
 
   # Give user warning and alow them to exit
   Write-Host "`nIn order for this script to function some files need to be downloaded.`nNothing has been downloaded yet and you can safely exit this script if you dont wish to continue."
@@ -93,8 +93,8 @@ switch ($optionPrompt) {
   1 {download(1)}
   2 {download(2)}
   3 {download(3)}
-  U {Uninstall-YTDLP; Install-YTDLP; Exit}
-  R {Uninstall-YTDLP; Exit}
+  R {Uninstall-YTDLP; Install-YTDLP; Exit}
+  U {Uninstall-YTDLP; Exit}
   default {Throw "Invalid option was provided"}
 }
 
