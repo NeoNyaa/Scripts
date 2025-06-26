@@ -1,1 +1,0 @@
-Start "Spicetify Installer" PowerShell -Command "Invoke-Expression (Invoke-RestMethod -UseBasicParsing -URI 'https://raw.githubusercontent.com/NeoNyaa/Scripts/main/Windows/PowerShell/Spicetify-Installer/bin/Spicetify-Installer.ps1')"

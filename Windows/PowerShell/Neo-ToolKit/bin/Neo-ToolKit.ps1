@@ -8,13 +8,10 @@ $PowerShellExePath = (Get-Process -Pid $PID -FileVersionInfo).FileName
 $tools = [ordered]@{
     "Quit" = ""
     "Ultimate Windows Utility" = "iwr -useb 'https://christitus.com/win' | iex"
-    "Windows 11 Debloat" = "iwr -useb 'https://raw.githubusercontent.com/Raphire/Win11Debloat/master/Get.ps1' | iex"
-    "Microsoft Activation Scripts" = "irm 'https://get.activated.win' | iex"
-    # "Impersonate TrustedInstaller" = "'NoExit'; iwr -useb 'https://raw.githubusercontent.com/NeoNyaa/Scripts/main/Windows/PowerShell/Impersonate-TrustedInstaller/bin/Impersonate-TrustedInstaller.ps1' | iex"
-    "Force Enable Optifine Mod Extraction" = "iwr -useb 'https://raw.githubusercontent.com/NeoNyaa/Scripts/main/Windows/PowerShell/Force-Enable-Optifine-Mod-Extraction/bin/Force-Enable-Optifine-Mod-Extraction.ps1' | iex"
     "Repair System Files" = "iwr -useb 'https://raw.githubusercontent.com/NeoNyaa/Scripts/main/Windows/PowerShell/Repair-System-Files/bin/Repair-System-Files.ps1' | iex"
-    # "Office Tool Plus" = "irm https://otp.landian.vip/get/ | iex"
-    "Super God Mode Folder" = "iwr -useb https://github.com/ThioJoe/Windows-Super-God-Mode/releases/latest/download/Super_God_Mode.ps1 | iex"
+    "Microsoft Activation Scripts" = "irm 'https://get.activated.win' | iex"
+    "Windows 11 Debloat" = "iwr -useb 'https://raw.githubusercontent.com/Raphire/Win11Debloat/master/Get.ps1' | iex"
+    "Force Enable Optifine Mod Extraction" = "iwr -useb 'https://raw.githubusercontent.com/NeoNyaa/Scripts/main/Windows/PowerShell/Force-Enable-Optifine-Mod-Extraction/bin/Force-Enable-Optifine-Mod-Extraction.ps1' | iex"
 }
 
 # Create a menu which will only stop running once the user requests it to do so.
