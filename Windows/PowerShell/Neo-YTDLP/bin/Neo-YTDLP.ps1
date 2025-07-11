@@ -1,7 +1,7 @@
 # UX tweaks
 $global:ProgressPreference = 'SilentlyContinue'
 
-$scriptVersion = "v1.0.4"
+$scriptVersion = "v1.0.5"
 $binaryPath = "$env:LOCALAPPDATA\Programs\Neo-YTDLP"
 $initialDirectory = Get-Location
 $defaultArguments = "--embed-chapters --windows-filenames -w --quiet --progress -o `"%(title)s.%(ext)s`" -P `"$env:userprofile\Downloads\Neo-YTDLP`" -a `"$binaryPath\Links.txt`" --ffmpeg-location `"$binaryPath`""
@@ -84,9 +84,9 @@ Invoke-Expression ".\yt-dlp.exe -U -q"
 Clear-Host
 Write-Host "`nPress 1 then [ENTER] for audio only downloads"
 Write-Host "Press 2 then [ENTER] for video only downloads"
-Write-Host "Press 3 then [ENTER] for audio and video downloads"
-Write-Host "Press R then [ENTER] to completely reinstall yt-dlp"
-Write-Host "Press U then [ENTER] to completely uninstall yt-dlp`n"
+Write-Host "Press 3 then [ENTER] for audio and video downloads`n"
+Write-Host "Press R then [ENTER] to completely reinstall yt-dlp" -ForegroundColor "DarkGray"
+Write-Host "Press U then [ENTER] to completely uninstall yt-dlp`n" -ForegroundColor "DarkGray"
 $optionPrompt = Read-Host -Prompt "Make a selection"
 
 switch ($optionPrompt) {

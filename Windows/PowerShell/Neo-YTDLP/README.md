@@ -2,5 +2,15 @@
 
 ### Changelog
 
--   v1.0.0
-    -   Initial Release
+- v1.0.0
+  - Initial Release
+- v1.0.1
+  - Fixed for PowerShell (not PWSH)
+- v1.0.2
+  - Further fixed for PowerShell (not PWSH)
+- v1.0.3
+  - Fixed Reinstall being U and Uninstall being R
+- v1.0.4
+  - Fixed backwards logic for reinstall/uninstall
+- v1.0.5
+  - Made reinstall/uninstall text dark gray
