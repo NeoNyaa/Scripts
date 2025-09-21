@@ -14,3 +14,7 @@
   - Fixed backwards logic for reinstall/uninstall
 - v1.0.5
   - Made reinstall/uninstall text dark gray
+- v1.1.0
+  - Moved from notepad to a winform window for link input
+  - Change from release builds of yt-dlp to nightly builds
+  - Removed some debug code
