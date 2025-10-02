@@ -10,7 +10,7 @@ $defaultArguments = "--embed-chapters --windows-filenames -w --progress -o `"%(t
 
 function Open-LinkInput {
   $main = New-Object System.Windows.Forms.Form
-  $main.Size = New-Object System.Drawing.Size(300, 216)
+  $main.Size = New-Object System.Drawing.Size(400, 216)
   $main.Text = "Neo-YTDLP | $scriptVersion"
   $main.FormBorderStyle = "FixedDialog"
   $main.StartPosition = "CenterScreen"
@@ -20,13 +20,13 @@ function Open-LinkInput {
 
   $label = New-Object System.Windows.Forms.Label
   $label.Location = New-Object System.Drawing.Point(9, 9)
-  $label.Size = New-Object System.Drawing.Size(280, 20)
+  $label.Size = New-Object System.Drawing.Size(380, 20)
   $label.Text = "Paste your links below (one per line)"
   $main.Controls.Add($label)
 
   $textBox = New-Object System.Windows.Forms.TextBox
   $textBox.Location = New-Object System.Drawing.Point(9, 34)
-  $textBox.Size = New-Object System.Drawing.Size(266, 100)
+  $textBox.Size = New-Object System.Drawing.Size(366, 100)
   $textBox.Multiline = $True
   $textBox.AcceptsReturn = $True
   $textBox.Scrollbars = "Vertical"
@@ -34,14 +34,14 @@ function Open-LinkInput {
   $main.Controls.Add($textBox)
 
   $ok = New-Object System.Windows.Forms.Button
-  $ok.Location = New-Object System.Drawing.Point(116, 143)
+  $ok.Location = New-Object System.Drawing.Point(216, 143)
   $ok.Size = New-Object System.Drawing.Size(75, 25)
   $ok.Text = [System.Windows.Forms.DialogResult]::OK
   $ok.DialogResult = [System.Windows.Forms.DialogResult]::OK
   $main.Controls.Add($ok)
 
   $cancel = New-Object System.Windows.Forms.Button
-  $cancel.Location = New-Object System.Drawing.Point(200, 143)
+  $cancel.Location = New-Object System.Drawing.Point(300, 143)
   $cancel.Size = New-Object System.Drawing.Size(75, 25)
   $cancel.Text = [System.Windows.Forms.DialogResult]::Cancel
   $cancel.DialogResult = [System.Windows.Forms.DialogResult]::Cancel
