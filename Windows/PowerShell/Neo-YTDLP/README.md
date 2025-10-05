@@ -18,3 +18,6 @@
   - Moved from notepad to a winform window for link input
   - Change from release builds of yt-dlp to nightly builds
   - Removed some debug code
+- v1.2.0
+  - Added logic to check if a reinstall is requested by myself
+  - Fixed the script continuing execution when clicking close or cancel on the input GUI

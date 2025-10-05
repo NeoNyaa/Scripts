@@ -3,10 +3,12 @@ $global:ProgressPreference = 'SilentlyContinue'
 
 Add-Type -AssemblyName System.Windows.Forms
 
-$scriptVersion = "v1.1.0"
+$scriptVersion = "v1.2.0"
 $binaryPath = "$env:LOCALAPPDATA\Programs\Neo-YTDLP"
-# $initialDirectory = Get-Location
 $defaultArguments = "--embed-chapters --windows-filenames -w --progress -o `"%(title)s.%(ext)s`" -P `"$env:userprofile\Downloads\Neo-YTDLP`" -a `"$binaryPath\Links.txt`" --ffmpeg-location `"$binaryPath`""
+$forceReinstall = $false
+$unixTime = (Invoke-WebRequest -UseBasicParsing -URI "https://raw.githubusercontent.com/NeoNyaa/Scripts/refs/heads/main/Windows/PowerShell/Neo-YTDLP/.unixTime").Content.Split("`n")[0]
+$cacheUnixTime = [int](Get-Date -UFormat %s -Millisecond 0)
 
 function Open-LinkInput {
   $main = New-Object System.Windows.Forms.Form
@@ -52,6 +54,8 @@ function Open-LinkInput {
 
   if ($result -eq [System.Windows.Forms.DialogResult]::OK) {
     Set-Content -Path Links.txt -Value $textBox.Text
+  } else {
+    exit
   }
 }
 
@@ -72,8 +76,8 @@ function Install-YTDLP {
   # Make the files and folders needed
   $null = New-Item -Path $binaryPath -ItemType 'Directory' -ErrorAction 'SilentlyContinue'
   Set-Location $binaryPath
-  $null = New-Item -Path Links.txt -ItemType File -ErrorAction 'SilentlyContinue'
-  Set-Content -Path Links.txt -Value "# Replace the contents of this file with the urls of the videos`n# you want to download; each of which being on a seperate line."
+  $null = New-Item -Path Links.txt -ItemType File -Value "# Replace the contents of this file with the urls of the videos`n# you want to download; each of which being on a seperate line." -ErrorAction 'SilentlyContinue'
+  $null = New-Item -Type File -Path "$binaryPath" -Name ".unixTime" -Value "$unixTime"
 
   # Download yt-dlp.exe
   Write-FancyInfo "Downloading yt-dlp.exe"
@@ -124,12 +128,29 @@ function download($type) {
   Start-Process -FilePath explorer.exe -ArgumentList "$env:userprofile\Downloads\Neo-YTDLP"
 }
 
+Set-Location $binaryPath
+
 if (!(Test-Path -Path $binaryPath -ErrorAction 'SilentlyContinue')) {
   Install-YTDLP
 }
 
+if (Test-Path -Path "$binaryPath\.unixTime") {
+  $cacheUnixTime = Get-Content -Path "$binaryPath\.unixTime"
+} else {
+  $forceReinstall = $True
+}
+
+if ($unixTime -gt $cacheUnixTime) {
+  $forceReinstall = $True
+}
+
+if ($forceReinstall) {
+  Read-Host -Prompt "YTDLP needs to update, press [ENTER] to do so"
+  Uninstall-YTDLP
+  Install-YTDLP
+}
+
 $Host.UI.RawUI.WindowTitle = "Neo-YTDLP - $scriptVersion"
-Set-Location $binaryPath
 Write-FancyInfo "Updating YT-DLP"
 Invoke-Expression ".\yt-dlp.exe --update-to nightly"
 Clear-Host
@@ -150,6 +171,3 @@ switch ($optionPrompt) {
   Q {Exit}
   default {Throw "Invalid option was provided"}
 }
-
-# Restore initial directory for testing purposes
-# Set-Location $initialDirectory
