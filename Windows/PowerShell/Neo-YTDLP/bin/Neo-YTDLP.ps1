@@ -3,10 +3,11 @@ $global:ProgressPreference = 'SilentlyContinue'
 
 Add-Type -AssemblyName System.Windows.Forms
 
-$scriptVersion = "v1.2.0"
+$scriptVersion = "v1.2.1"
 $binaryPath = "$env:LOCALAPPDATA\Programs\Neo-YTDLP"
 $defaultArguments = "--embed-chapters --windows-filenames -w --progress -o `"%(title)s.%(ext)s`" -P `"$env:userprofile\Downloads\Neo-YTDLP`" -a `"$binaryPath\Links.txt`" --ffmpeg-location `"$binaryPath`""
 $forceReinstall = $false
+$showPrompt = $true
 $unixTime = (Invoke-WebRequest -UseBasicParsing -URI "https://raw.githubusercontent.com/NeoNyaa/Scripts/refs/heads/main/Windows/PowerShell/Neo-YTDLP/.unixTime").Content.Split("`n")[0]
 $cacheUnixTime = [int](Get-Date -UFormat %s -Millisecond 0)
 
@@ -64,14 +65,16 @@ function Write-FancyInfo($msg) {
   Write-Host "$msg"
 }
 
-function Install-YTDLP {
+function Install-YTDLP($showPrompt) {
   Clear-Host
   $Host.UI.RawUI.WindowTitle = "Neo-YTDLP Installer - $scriptVersion"
 
   # Give user warning and allow them to exit
-  Write-Host "`nIn order for this script to function some files need to be downloaded.`nNothing has been downloaded yet and you can safely exit this script if you do not wish to continue."
-  Read-Host -Prompt "Otherwise, press [ENTER] to continue"
-  Clear-Host
+  if ($showPrompt) {
+    Write-Host "`nIn order for this script to function some files need to be downloaded.`nNothing has been downloaded yet and you can safely exit this script if you do not wish to continue."
+    Read-Host -Prompt "Otherwise, press [ENTER] to continue"
+    Clear-Host
+  }
 
   # Make the files and folders needed
   $null = New-Item -Path $binaryPath -ItemType 'Directory' -ErrorAction 'SilentlyContinue'
@@ -128,46 +131,53 @@ function download($type) {
   Start-Process -FilePath explorer.exe -ArgumentList "$env:userprofile\Downloads\Neo-YTDLP"
 }
 
-Set-Location $binaryPath
+function main() {
+  Set-Location $binaryPath
 
-if (!(Test-Path -Path $binaryPath -ErrorAction 'SilentlyContinue')) {
-  Install-YTDLP
+  if (!(Test-Path -Path $binaryPath -ErrorAction 'SilentlyContinue')) {
+    Install-YTDLP
+  }
+
+  if (Test-Path -Path "$binaryPath\.unixTime") {
+    $cacheUnixTime = Get-Content -Path "$binaryPath\.unixTime"
+  } else {
+    $forceReinstall = $True
+  }
+
+  if ($unixTime -gt $cacheUnixTime) {
+    $forceReinstall = $True
+  }
+
+  if ($forceReinstall) {
+    Clear-Host
+    Write-host "`nChanges have been made to this script that require a reinstall of YTDLP"
+    Read-Host -Prompt "Press [ENTER] to reinstall YTDLP"
+    Uninstall-YTDLP
+    $showPrompt = $false
+    Install-YTDLP
+  }
+
+  $Host.UI.RawUI.WindowTitle = "Neo-YTDLP - $scriptVersion"
+  Write-FancyInfo "Updating YT-DLP"
+  Invoke-Expression ".\yt-dlp.exe --update-to nightly"
+  Clear-Host
+  Write-Host "`nPress 1 then [ENTER] for audio only downloads"
+  Write-Host "Press 2 then [ENTER] for video only downloads"
+  Write-Host "Press 3 then [ENTER] for audio and video downloads"
+  Write-Host "Press R then [ENTER] to completely reinstall yt-dlp" -ForegroundColor "DarkGray"
+  Write-Host "Press U then [ENTER] to completely uninstall yt-dlp" -ForegroundColor "DarkGray"
+  Write-Host "Press Q then [ENTER] to exit" -ForegroundColor "DarkGray"
+  $optionPrompt = Read-Host -Prompt "`nMake a selection"
+
+  switch ($optionPrompt) {
+    1 {download(1)}
+    2 {download(2)}
+    3 {download(3)}
+    R {Uninstall-YTDLP; $showPrompt = $false; Install-YTDLP; main}
+    U {Uninstall-YTDLP; Exit}
+    Q {Exit}
+    default {Throw "Invalid option was provided"}
+  }
 }
 
-if (Test-Path -Path "$binaryPath\.unixTime") {
-  $cacheUnixTime = Get-Content -Path "$binaryPath\.unixTime"
-} else {
-  $forceReinstall = $True
-}
-
-if ($unixTime -gt $cacheUnixTime) {
-  $forceReinstall = $True
-}
-
-if ($forceReinstall) {
-  Read-Host -Prompt "YTDLP needs to update, press [ENTER] to do so"
-  Uninstall-YTDLP
-  Install-YTDLP
-}
-
-$Host.UI.RawUI.WindowTitle = "Neo-YTDLP - $scriptVersion"
-Write-FancyInfo "Updating YT-DLP"
-Invoke-Expression ".\yt-dlp.exe --update-to nightly"
-Clear-Host
-Write-Host "`nPress 1 then [ENTER] for audio only downloads"
-Write-Host "Press 2 then [ENTER] for video only downloads"
-Write-Host "Press 3 then [ENTER] for audio and video downloads"
-Write-Host "Press R then [ENTER] to completely reinstall yt-dlp" -ForegroundColor "DarkGray"
-Write-Host "Press U then [ENTER] to completely uninstall yt-dlp" -ForegroundColor "DarkGray"
-Write-Host "Press Q then [ENTER] to exit" -ForegroundColor "DarkGray"
-$optionPrompt = Read-Host -Prompt "`nMake a selection"
-
-switch ($optionPrompt) {
-  1 {download(1)}
-  2 {download(2)}
-  3 {download(3)}
-  R {Uninstall-YTDLP; Install-YTDLP; Exit}
-  U {Uninstall-YTDLP; Exit}
-  Q {Exit}
-  default {Throw "Invalid option was provided"}
-}
+main

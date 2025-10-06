@@ -21,3 +21,7 @@
 - v1.2.0
   - Added logic to check if a reinstall is requested by myself
   - Fixed the script continuing execution when clicking close or cancel on the input GUI
+- v1.2.1
+  - Reworded the notice about a reinstall being needed
+  - Rerun the script when performing the reinstall task
+  - Skip the install prompt when doing a reinstall/forced update
