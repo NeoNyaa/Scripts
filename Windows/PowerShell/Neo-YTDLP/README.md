@@ -25,3 +25,5 @@
   - Reworded the notice about a reinstall being needed
   - Rerun the script when performing the reinstall task
   - Skip the install prompt when doing a reinstall/forced update
+- v1.3.0
+  - Added a new dependency which is required for youtube downloads to work reliably

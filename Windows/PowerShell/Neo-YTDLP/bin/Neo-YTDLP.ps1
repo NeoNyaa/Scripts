@@ -3,7 +3,7 @@ $global:ProgressPreference = 'SilentlyContinue'
 
 Add-Type -AssemblyName System.Windows.Forms
 
-$scriptVersion = "v1.2.1"
+$scriptVersion = "v1.3.0"
 $binaryPath = "$env:LOCALAPPDATA\Programs\Neo-YTDLP"
 $defaultArguments = "--embed-chapters --windows-filenames -w --progress -o `"%(title)s.%(ext)s`" -P `"$env:userprofile\Downloads\Neo-YTDLP`" -a `"$binaryPath\Links.txt`" --ffmpeg-location `"$binaryPath`""
 $forceReinstall = $false
@@ -111,6 +111,15 @@ function Install-YTDLP($showPrompt) {
   Write-Host " - Moving and cleaning up residual files"
   Move-Item -Path "phantomjs-2.1.1-windows\bin\phantomjs.exe" -Destination .
   Remove-Item -Path "phantomjs-2.1.1-windows*" -Force -Recurse
+
+  # Download and extract Deno
+	Write-FancyInfo "Downloading Deno"
+  Invoke-RestMethod -UseBasicParsing -URI "https://github.com/denoland/deno/releases/latest/download/deno-x86_64-pc-windows-msvc.zip" -OutFile "deno-x86_64-pc-windows-msvc.zip"
+  Write-Host " - Extracting Deno"
+  Expand-Archive -Path "deno-x86_64-pc-windows-msvc.zip" -DestinationPath .
+  Write-Host " - Moving and cleaning up residual files"
+  Move-Item -Path "deno-x86_64-pc-windows-msvc\deno.exe" -Destination .
+  Remove-Item -Path "deno-x86_64-pc-windows-msvc*" -Force -Recurse
 }
 
 function Uninstall-YTDLP {
