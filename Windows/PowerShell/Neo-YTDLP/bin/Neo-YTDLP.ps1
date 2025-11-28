@@ -3,7 +3,7 @@ $global:ProgressPreference = 'SilentlyContinue'
 
 Add-Type -AssemblyName System.Windows.Forms
 
-$scriptVersion = "v1.3.0"
+$scriptVersion = "v1.3.1"
 $binaryPath = "$env:LOCALAPPDATA\Programs\Neo-YTDLP"
 $defaultArguments = "--embed-chapters --windows-filenames -w --progress -o `"%(title)s.%(ext)s`" -P `"$env:userprofile\Downloads\Neo-YTDLP`" -a `"$binaryPath\Links.txt`" --ffmpeg-location `"$binaryPath`""
 $forceReinstall = $false
@@ -117,8 +117,7 @@ function Install-YTDLP($showPrompt) {
   Invoke-RestMethod -UseBasicParsing -URI "https://github.com/denoland/deno/releases/latest/download/deno-x86_64-pc-windows-msvc.zip" -OutFile "deno-x86_64-pc-windows-msvc.zip"
   Write-Host " - Extracting Deno"
   Expand-Archive -Path "deno-x86_64-pc-windows-msvc.zip" -DestinationPath .
-  Write-Host " - Moving and cleaning up residual files"
-  Move-Item -Path "deno-x86_64-pc-windows-msvc\deno.exe" -Destination .
+  Write-Host " - Cleaning up residual files"
   Remove-Item -Path "deno-x86_64-pc-windows-msvc*" -Force -Recurse
 }
 
@@ -162,7 +161,7 @@ function main() {
     Write-host "`nChanges have been made to this script that require a reinstall of YTDLP"
     Read-Host -Prompt "Press [ENTER] to reinstall YTDLP"
     Uninstall-YTDLP
-    $showPrompt = $false
+    $showPrompt = $false # Not a bug but a limitation (https://learn.microsoft.com/en-gb/powershell/utility-modules/psscriptanalyzer/rules/usedeclaredvarsmorethanassignments?view=ps-modules#special-cases)
     Install-YTDLP
   }
 
