@@ -7,11 +7,10 @@ $PowerShellExePath = (Get-Process -Pid $PID -FileVersionInfo).FileName
 # A curated list of PowerShell scripts that I find useful in a hashtable format for easy additions/removals
 $tools = [ordered]@{
     "Quit" = ""
-    "Ultimate Windows Utility" = "iwr -useb 'https://christitus.com/win' | iex"
-    "Repair System Files" = "iwr -useb 'https://raw.githubusercontent.com/NeoNyaa/Scripts/main/Windows/PowerShell/Repair-System-Files/bin/Repair-System-Files.ps1' | iex"
+    "Ultimate Windows Utility" = "irm 'https://christitus.com/win' | iex"
+    "Windows 11 Debloat" = "irm 'https://github.com/Raphire/Win11Debloat/releases/latest/download/Get.ps1' | iex"
+    "Repair System Files" = "irm 'https://raw.githubusercontent.com/NeoNyaa/Scripts/main/Windows/PowerShell/Repair-System-Files/bin/Repair-System-Files.ps1' | iex"
     "Microsoft Activation Scripts" = "irm 'https://get.activated.win' | iex"
-    "Windows 11 Debloat" = "iwr -useb 'https://raw.githubusercontent.com/Raphire/Win11Debloat/master/Win11Debloat.ps1' | iex"
-    "Force Enable Optifine Mod Extraction" = "iwr -useb 'https://raw.githubusercontent.com/NeoNyaa/Scripts/main/Windows/PowerShell/Force-Enable-Optifine-Mod-Extraction/bin/Force-Enable-Optifine-Mod-Extraction.ps1' | iex"
 }
 
 # Create a menu which will only stop running once the user requests it to do so.
