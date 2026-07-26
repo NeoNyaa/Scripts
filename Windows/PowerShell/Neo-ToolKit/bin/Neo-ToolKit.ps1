@@ -11,6 +11,7 @@ $tools = [ordered]@{
     "Windows 11 Debloat" = "irm 'https://github.com/Raphire/Win11Debloat/releases/latest/download/Get.ps1' | iex"
     "Repair System Files" = "irm 'https://raw.githubusercontent.com/NeoNyaa/Scripts/main/Windows/PowerShell/Repair-System-Files/bin/Repair-System-Files.ps1' | iex"
     "Microsoft Activation Scripts" = "irm 'https://get.activated.win' | iex"
+    # https://github.com/ionuttbara/windows-defender-remover/releases/latest/download/DefenderRemover.exe
 }
 
 # Create a menu which will only stop running once the user requests it to do so.
