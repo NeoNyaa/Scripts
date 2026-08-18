@@ -147,12 +147,12 @@ function main() {
   }
 
   if (Test-Path -Path "$binaryPath\.unixTime") {
-    $cacheUnixTime = Get-Content -Path "$binaryPath\.unixTime"
+    $cacheUnixTime = [int](Get-Content -Path "$binaryPath\.unixTime")
   } else {
     $forceReinstall = $True
   }
 
-  if ($unixTime -gt $cacheUnixTime) {
+  if ([int]$unixTime -gt [int]$cacheUnixTime) {
     $forceReinstall = $True
   }
 
