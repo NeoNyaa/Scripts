@@ -128,9 +128,9 @@ function Uninstall-YTDLP {
 
 function download($type) {
   switch ($type) {
-    1 {$completeArgs = $defaultArguments + " -f bestaudio --audio-format mp3 -x"}
+    1 {$completeArgs = $defaultArguments + " -f bestaudio -x --no-embed-metadata --no-embed-thumbnail"}
     2 {$completeArgs = $defaultArguments + " -f bestvideo"}
-    3 {$completeArgs = $defaultArguments + " -f `"bv+ba/b`""}
+    3 {$completeArgs = $defaultArguments + " -f bestvideo+bestaudio"}
   }
   Open-LinkInput
   Clear-Host
