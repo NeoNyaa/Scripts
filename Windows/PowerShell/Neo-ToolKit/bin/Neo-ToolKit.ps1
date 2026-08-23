@@ -7,11 +7,12 @@ $PowerShellExePath = (Get-Process -Pid $PID -FileVersionInfo).FileName
 # A curated list of PowerShell scripts that I find useful in a hashtable format for easy additions/removals
 $tools = [ordered]@{
     "Quit" = ""
-    "Ultimate Windows Utility" = "irm 'https://christitus.com/win' | iex"
-    "Windows 11 Debloat" = "irm 'https://github.com/Raphire/Win11Debloat/releases/latest/download/Get.ps1' | iex"
-    "Repair System Files" = "irm 'https://raw.githubusercontent.com/NeoNyaa/Scripts/main/Windows/PowerShell/Repair-System-Files/bin/Repair-System-Files.ps1' | iex"
+    "Ultimate Windows Utility"     = "irm 'https://christitus.com/win' | iex"
+    "Windows 11 Debloat"           = "irm 'https://github.com/Raphire/Win11Debloat/releases/latest/download/Get.ps1' | iex"
+    "Repair System Files"          = "irm 'https://raw.githubusercontent.com/NeoNyaa/Scripts/main/Windows/PowerShell/Repair-System-Files/bin/Repair-System-Files.ps1' | iex"
     "Microsoft Activation Scripts" = "irm 'https://get.activated.win' | iex"
-    # https://github.com/ionuttbara/windows-defender-remover/releases/latest/download/DefenderRemover.exe
+    "Clean Junk Files"             = "cleanmgr.exe /D C /VeryLowDisk"
+    #"Uninstall Defender"           = "irm 'https://github.com/ionuttbara/windows-defender-remover/releases/latest/download/DefenderRemover.exe' -OutFile $env:TEMP\DefenderRemover.exe; .$env:TEMP\DefenderRemover.exe y; Remove-Item $env:TEMP\DefenderRemover.exe"
 }
 
 # Create a menu which will only stop running once the user requests it to do so.
